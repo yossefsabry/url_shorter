@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/yossefsabry/url_shorter/handler"
-	"github.com/yossefsabry/url_shorter/store"
+	"url_shorter/store"
+	"url_shorter/handler"
 	"github.com/gin-gonic/gin"
 )
 
@@ -15,6 +15,18 @@ func main() {
 			"message": "Hey Go URL Shortener !",
 		})
 	})
+
+	r.POST("/:create-short-url", func(c *gin.Context) {
+		handler.CreateShortUrl(c)
+	})
+
+	r.GET("/:shortUrl", func(c *gin.Context) {
+		handler.HandleShourtUrlRedirect(c)
+	})
+
+
+	// create a redis client here
+	store.InitializationRedisClient()
 
 	err := r.Run(":4440")
 	if err != nil {
