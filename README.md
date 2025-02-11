@@ -63,11 +63,10 @@ http://localhost:4440/create-short-url with the following body:
 ```bash
 curl --request POST \
 --data '{
-    "long_url": "https://www.guru3d.com/news-story/spotted-ryzen-" + 
-"threadripper-pro-3995wx-processor-with-8-channel-ddr4,2.html",
-    "user_id" : "e0dba740-fc4b-4977-872c-d360239e6b10"
+    "long_url": "foo",
+    "user_id" : "id"
 }' \
-  http://localhost:9808/create-short-url | jq
+  http://localhost:4440/create-short-url | jq
 
 ```
 
@@ -88,5 +87,19 @@ following JSON:
     identifying users in a real-world application.
 
 
+# for testing
+```bash
+go test ./shortener ./store -v
+```
 
 
+> [!IMPORTANT]
+> for learning how it's work
+    - [[./teching/lesson-1.md]]
+    
+
+
+email:
+```email
+yossefsabry66@gmail.com 
+```

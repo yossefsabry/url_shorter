@@ -11,17 +11,20 @@ import (
 
 func sha2560f(input string) []byte{
 	algorthim := sha256.New()
+	// fmt.Printf("the hash: %v\n", algorthim); // for testing
 	algorthim.Write([]byte(input))
+	// /fmt.Printf("the hash after write: %v\n", algorthim) // for testing
+	// fmt.Printf("algorthim sum: %v\n", algorthim.Sum(nil)) //for testing
 	return algorthim.Sum(nil)
 }
 
 func base58Encoding(bytes []byte) string{
-	encoding := base58.BitcoinEncoding
-	encoded, err := encoding.Encode(bytes)
+	encoding := base58.BitcoinEncoding // making ebject from base58
+	encoded, err := encoding.Encode(bytes) // encode the byte
 	if err != nil {
 		log.Fatalf("error happend in encoding: %v", err)
 	}
-	return string(encoded)
+	return string(encoded) // return byte like string
 }
 
 
